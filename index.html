@@ -169,6 +169,72 @@
             font-size: 0.95em;
         }
 
+        /* 에피소드 가로 스크롤 레이아웃 */
+        .episode-scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .episode-card {
+            flex: 0 0 320px; /* 각 카드의 고정 너비 */
+            scroll-snap-align: start;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-top: 3px solid #ff4d4d;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        @media (min-width: 600px) {
+            .episode-card {
+                flex: 0 0 380px; /* 화면이 넓을 때 카드 폭 확장 */
+            }
+        }
+        .episode-poster {
+            width: 100%;
+            aspect-ratio: 1216 / 832; /* 포스터 비율(1216x832) 보장 */
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+            display: block;
+        }
+        .episode-content {
+            padding: 15px;
+            flex-grow: 1;
+        }
+        .episode-content h4 {
+            color: #ff4d4d;
+            font-size: 1.1em;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 5px;
+        }
+        .episode-content p {
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+
+        /* 가로 스크롤바 커스텀 */
+        .episode-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .episode-scroll-container::-webkit-scrollbar-track {
+            background: #1e1e1e;
+            border-radius: 4px;
+        }
+        .episode-scroll-container::-webkit-scrollbar-thumb {
+            background: #ff4d4d;
+            border-radius: 4px;
+        }
+        .episode-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #ff8080;
+        }
+
         /* 등장인물 컨테이너 */
         .character-box {
             border: 1px solid #333;
@@ -317,26 +383,42 @@
         <p>루시아는 회귀 전의 지식을 무기로 하워드와 함께 적들을 각개격파합니다. 결국 결말부에서 황녀마저 폐위시킨 루시아는 여황제의 자리에 오르고 하워드와 결혼하며 승리하게 됩니다.</p>
     </div>
 
-    <div class="info-grid">
-        <div class="info-card">
-            <h4>춘분 무도회 (3월 20일)</h4>
-            <p>아카데미 입학 기념 무도회입니다. 무도회장에서 샤를이 루시아를 공개 모욕하자 하워드가 나서서 경고합니다. 그런 하워드의 태도에 질투와 배신감을 느낀 샤를이 폭주하여 무도회장을 거대한 정글로 뒤덮는 <strong>&lt;페르세포네의 밤&gt;</strong>을 발동시키지만, 하워드가 식물을 베어내고 루시아를 구출하며 샤를은 퇴학당합니다.</p>
+    <!-- 에피소드 가로 스크롤 섹션 -->
+    <div class="episode-scroll-container">
+        <div class="episode-card">
+            <img src="1.png" alt="춘분 무도회 포스터" class="episode-poster">
+            <div class="episode-content">
+                <h4>춘분 무도회 (3월 20일)</h4>
+                <p>아카데미 입학 기념 무도회입니다. 무도회장에서 샤를이 루시아를 공개 모욕하자 하워드가 나서서 경고합니다. 그런 하워드의 태도에 질투와 배신감을 느낀 샤를이 폭주하여 무도회장을 거대한 정글로 뒤덮는 <strong>&lt;페르세포네의 밤&gt;</strong>을 발동시키지만, 하워드가 식물을 베어내고 루시아를 구출하며 샤를은 퇴학당합니다.</p>
+            </div>
         </div>
-        <div class="info-card">
-            <h4>하짓날 바캉스 (6월 22일)</h4>
-            <p>남쪽 섬에서 3박 4일간 열리는 야외 생존 시험입니다. 하워드와 같은 조에 배정받지 못한 엘리아가 억눌린 열등감을 폭발시킵니다. <strong>&lt;적월의 광인&gt;</strong>을 발동해 마수들을 광폭화시켜 루시아 진영을 습격하지만, 두 사람의 협공에 패배하고 가문의 귀족 지위를 박탈당합니다.</p>
+        <div class="episode-card">
+            <img src="2.png" alt="하짓날 바캉스 포스터" class="episode-poster">
+            <div class="episode-content">
+                <h4>하짓날 바캉스 (6월 22일)</h4>
+                <p>남쪽 섬에서 3박 4일간 열리는 야외 생존 시험입니다. 하워드와 같은 조에 배정받지 못한 엘리아가 억눌린 열등감을 폭발시킵니다. <strong>&lt;적월의 광인&gt;</strong>을 발동해 마수들을 광폭화시켜 루시아 진영을 습격하지만, 두 사람의 협공에 패배하고 가문의 귀족 지위를 박탈당합니다.</p>
+            </div>
         </div>
-        <div class="info-card">
-            <h4>추분 건국제 (9월 22일)</h4>
-            <p>제국 건국제이자 신탁 발표일입니다. 루시아가 신전에 잠입해 [루시아가 진정한 황위 계승자]라고 신탁을 조작해 자신의 위상을 끌어올립니다. 이에 위기감을 느낀 황녀파 시에나가 루시아를 급습해 피해를 고스란히 반사하는 <strong>&lt;데칼코마니아&gt;</strong>를 시전하지만, 루시아가 역재생 마법을 각성하여 파훼하고 시에나를 사회적으로 매장시킵니다.</p>
+        <div class="episode-card">
+            <img src="3.png" alt="추분 건국제 포스터" class="episode-poster">
+            <div class="episode-content">
+                <h4>추분 건국제 (9월 22일)</h4>
+                <p>제국 건국제이자 신탁 발표일입니다. 루시아가 신전에 잠입해 [루시아가 진정한 황위 계승자]라고 신탁을 조작해 자신의 위상을 끌어올립니다. 이에 위기감을 느낀 황녀파 시에나가 루시아를 급습해 피해를 고스란히 반사하는 <strong>&lt;데칼코마니아&gt;</strong>를 시전하지만, 루시아가 역재생 마법을 각성하여 파훼하고 시에나를 사회적으로 매장시킵니다.</p>
+            </div>
         </div>
-        <div class="info-card">
-            <h4>할로윈 축제 (10월 31일)</h4>
-            <p>비가 쏟아지는 할로윈 당일입니다. 유진은 루시아가 높아진 위상으로 다른 남자를 만나고 다닌다는 헛소문을 퍼뜨려 루시아를 고립시키고, 비 오는 거리에서 기습하여 빗물을 매개로 아카데미 일대를 얼려버리는 <strong>&lt;육방정계&gt;</strong>를 발동합니다. 하지만 오해를 푼 하워드가 난입해 유진을 제압하고, 루시아는 아카데미를 구한 영웅으로 권력을 더욱 강화합니다.</p>
+        <div class="episode-card">
+            <img src="4.png" alt="할로윈 축제 포스터" class="episode-poster">
+            <div class="episode-content">
+                <h4>할로윈 축제 (10월 31일)</h4>
+                <p>비가 쏟아지는 할로윈 당일입니다. 유진은 루시아가 높아진 위상으로 다른 남자를 만나고 다닌다는 헛소문을 퍼뜨려 루시아를 고립시키고, 비 오는 거리에서 기습하여 빗물을 매개로 아카데미 일대를 얼려버리는 <strong>&lt;육방정계&gt;</strong>를 발동합니다. 하지만 오해를 푼 하워드가 난입해 유진을 제압하고, 루시아는 아카데미를 구한 영웅으로 권력을 더욱 강화합니다.</p>
+            </div>
         </div>
-        <div class="info-card" style="grid-column: 1 / -1;">
-            <h4>동짓날 왕위 찬탈 (12월 21일)</h4>
-            <p>루시아의 권력이 마침내 황권을 위협하는 수준에 도달합니다. 자리를 지키기 위해 궁지에 몰린 황녀 아이리스가 제국의 낮을 지워버리고 극심한 한파를 불러오는 최후의 권능 <strong>&lt;황도&gt;</strong>를 발동합니다. 하지만 하워드가 스스로 피를 쏟아부어 물리력을 강화하는 <strong>&lt;샛별을 품은 황혼&gt;</strong>을 전개해 결계를 직접 부숴버립니다. 결과적으로 황녀는 폐위되고 루시아가 황제에 오르며, <span class="highlight">당신의 가문은 반역죄로 멸족당하고 당신 역시 처형됩니다.</span></p>
+        <div class="episode-card">
+            <img src="5.png" alt="동짓날 왕위 찬탈 포스터" class="episode-poster">
+            <div class="episode-content">
+                <h4>동짓날 왕위 찬탈 (12월 21일)</h4>
+                <p>루시아의 권력이 마침내 황권을 위협하는 수준에 도달합니다. 자리를 지키기 위해 궁지에 몰린 황녀 아이리스가 제국의 낮을 지워버리고 극심한 한파를 불러오는 최후의 권능 <strong>&lt;황도&gt;</strong>를 발동합니다. 하지만 하워드가 스스로 피를 쏟아부어 물리력을 강화하는 <strong>&lt;샛별을 품은 황혼&gt;</strong>을 전개해 결계를 직접 부숴버립니다. 결과적으로 황녀는 폐위되고 루시아가 황제에 오르며, <span class="highlight">당신의 가문은 반역죄로 멸족당하고 당신 역시 처형됩니다.</span></p>
+            </div>
         </div>
     </div>
 
@@ -461,7 +543,7 @@
         <button class="inner-btn" onclick="toggleInner(this)">[내면 및 서사 확인하기]</button>
         <div class="inner-content">
             <p><strong class="highlight">[억눌린 아이의 본성과 착한 아이 증후군]</strong><br>
-            권위가 추락해 몰락해가는 황실에서, 귀족들에게 무시당하지 않기 위해 어리광 한번 부리지 못하고 어른스러움을 강요받으며 자랐습니다. 속마음은 그저 맘껏 사랑받고 뛰어놀고 싶은 평범한 12살 소녀입니다. 남들 몰래 바닥에 떨어진 과자를 주워 먹거나 유치한 연애소설을 숨겨놓고 읽는 등 귀여운 소소한 일탈을 즐기며 혼자 뿌듯해합니다. 완전히 마음을 허락한 인물들이나 단짝 유진 앞에서는 제 나이 또래의 순수하고 어린아이 같은 반응을 숨기지 못하고 드러내게 됩니다.</p>
+            권위가 추락해 몰락해가는 황실에서, 귀족들에게 무시당하지 않기 위해 어리광 한번 부리지 못하고 어른스러움을 강요받으며 자랐습니다. 속마음은 그저 맘껏 사랑받고 뛰어놀고 싶은 평범한 12살 소녀입니다. 남들 몰래 바닥에 떨어진 과자를 주워 먹거나 유치한 연애소설을 숨겨놓고 읽는 등 귀려운 소소한 일탈을 즐기며 혼자 뿌듯해합니다. 완전히 마음을 허락한 인물들이나 단짝 유진 앞에서는 제 나이 또래의 순수하고 어린아이 같은 반응을 숨기지 못하고 드러내게 됩니다.</p>
         </div>
     </div>
 
