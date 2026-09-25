@@ -15,23 +15,32 @@
             color: #e0e0e0;
             line-height: 1.6;
             margin: 0;
-            padding: 15px;
+            padding: 0; /* body의 기본 padding을 없애고 container에만 적용 */
             box-sizing: border-box;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+
+        /* 타이틀 헤더: 화면 좌우 끝까지 꽉 차게 설정 */
+        .title-header {
+            width: 100%;
+            margin-bottom: 20px;
+            overflow: hidden;
         }
 
         /* 이미지 스타일 */
         .title-image {
             width: 100%;
             height: auto;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #333;
             display: block;
+            border: none;
+            border-radius: 0;
         }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px 15px 15px; /* 컨테이너 좌우/하단 여백 유지 */
+        }
+
         .character-image {
             width: 100%;
             height: auto;
@@ -248,8 +257,11 @@
 </head>
 <body>
 
-<div class="container">
+<header class="title-header">
     <img src="title.png" alt="로판속 악역으로 살아남기 타이틀" class="title-image">
+</header>
+
+<div class="container">
     <h1></h1>
 
     <div class="toc">
